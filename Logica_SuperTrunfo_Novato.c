@@ -1,124 +1,415 @@
-//Comparando as cartas do super trunfo - nível novato
+//Logica Super Trunfo - Nível Aventureiro
+#include <stdio.h> //inclui a biblioteca padrao do C
 
-#include <stdio.h> //inclui a biblioteca padrão do C
+int main() //Declara a funcao principal 
+{
+    // Atributos da Carta 1
+    char Carta1[50] = "Carta 1";
+    char Codigo1[50] = "MS_01";
+    char Estado1[50] = "Mato Grosso do Sul";
+    char Cidade1[50] = "Campo Grande";
+    unsigned int Pontos_Turisticos1 = 15;
+    unsigned long int Populacao1 = 898100;
+    float Area1 = 8082.33;
+    double PIB1 = 34100000000;
+    float Confortodemografico1 = Area1/Populacao1;
+    float Superpoder1 = Pontos_Turisticos1 + Populacao1 + Area1 + PIB1 + Confortodemografico1;
+    
+    // Atributos da Carta 2
+    char Carta2[50] = "Carta 2";
+    char Codigo2[50] = "PE_01";
+    char Estado2[50] = "Pernambuco";
+    char Cidade2[50] = "Recife";
+    unsigned int Pontos_Turisticos2 = 30;
+    unsigned long int Populacao2 = 1488920;
+    float Area2 = 218.843;
+    double PIB2 = 51600000000;
+    float Confortodemografico2 = Area2/Populacao2; // corrigido
+    float Superpoder2 = Pontos_Turisticos2 + Populacao2 + Area2 + PIB2 + Confortodemografico2;
 
-    int main(){ //Declara a função principal 
+    int Opcao;
+    int Atributo;
+    
+    printf("Bem-vindo ao Super Trunfo - Cidades Brasileiras\n");
+    printf("Vamos comecar o jogo? Entao prepare-se!\n");
+    printf ("Escolha a sua carta: \n");
+    printf("1- Carta 1\n");
+    printf("2- Carta 2\n");
+    scanf("%d", &Opcao);
+    getchar(); // para limpar o \n do buffer
 
-        // Variáveis da Carta 1
-        char Carta1[50] = "Carta 1", Codigo1[50], Estado1[50], Cidade1[50];
-        unsigned int Pontos_Turisticos1;
-        unsigned long int Populacao1;
-        float Area1;
-        double PIB1;
-        
-        // Variáveis da Carta 2
-        char Carta2[50] = "Carta 2", Codigo2[50], Estado2[50], Cidade2[50];
-        unsigned int Pontos_Turisticos2;
-        unsigned long int Populacao2;
-        float Area2;
-        double PIB2;
- 
-            //Solicita ao usuário a inserção das variáveis da Carta 1
-            printf("Criando as Cartas do Super Trunfo\n");
-            printf("%s\n", Carta1);
-            printf("Digite o Codigo da Carta: ");
-            fgets(Codigo1, 50, stdin);
-            printf("Digite a Sigla do Estado: ");
-            fgets(Estado1, 50, stdin);
-            printf("Insira o Nome da Cidade: ");
-            fgets(Cidade1, 50, stdin);
-            printf("Quantidade de habitantes: ");
-            scanf("%lu", &Populacao1);
-            printf("Digite a Area da Cidade em km2: ");
-            scanf("%f", &Area1);
-            printf("Digite o PIB anual da cidade: ");
-            scanf("%lf", &PIB1);
-            printf("Quantidade de Pontos Turisticos: ");
-            scanf("%u", &Pontos_Turisticos1);
-            getchar();
-
-                //Cálculo da densidade populacional, do PIB per capta e do inverso da densidade da Carta 1
-                float Densidade1 = (float) Populacao1/Area1;
-                float PIB_Percapta1 = (float) PIB1/Populacao1;
-                double Inversodadensidade1 = (float) Area1/Populacao1;
-
-                //Cálculo do superpoder da Carta 1
-                double Superpoder1 = Populacao1 + PIB_Percapta1 + PIB1 + Area1 + Inversodadensidade1 + Pontos_Turisticos1;
-
-            //Impressão das variáveis declaradas da Carta 1
-            printf("%s\n", Carta1);
+    switch (Opcao) {
+        case 1:
+            printf("Voce escolheu a carta 1. Confira os atributos da carta 1 logo a seguir: \n");
             printf("Codigo: %s\n", Codigo1);
             printf("Estado: %s\n", Estado1);
             printf("Cidade: %s\n", Cidade1);
-            printf("Populacao: %lu\n", Populacao1);
-            printf("Area: %.2f km2\n", Area1);
-            printf("Densidade Populacional: %.2f\n", Densidade1);
-            printf("PIB: %.2lf\n", PIB1);
-            printf("PIB Percapta: %.2f\n", PIB_Percapta1);
             printf("Pontos Turisticos: %u\n", Pontos_Turisticos1);
-            printf("Super poder: %.2lf\n", Superpoder1);
-            printf("Carta1 cadastrada com sucesso\n\n");
+            printf("Populacao: %lu\n", Populacao1);
+            printf("Area: %f\n", Area1);
+            printf("PIB: %lf\n", PIB1);
+            printf("Conforto Demografico: %f\n", Confortodemografico1);
+            printf("Superpoder: %f\n\n", Superpoder1);
+            
+            printf("Escolha o atributo da carta 1. Para escolher o atributo da carta 1, digite o valor correspondente: \n");
+            printf("1 Para Pontos Turisticos \n");
+            printf("2 Para Populacao \n");
+            printf("3 Para Area \n");
+            printf("4 Para PIB \n");
+            printf("5 Para Conforto Demografico \n");
+            printf("6 Para Superpoder \n");
+            scanf("%d", &Atributo);
+            getchar();
 
-            //Solicita ao usuário a inserção das variáveis da Carta 2
-            printf("%s\n", Carta2);
-            printf("Digite o Codigo da Carta: ");
-            fgets(Codigo2, 50, stdin);
-            printf("Digite a Sigla do Estado: ");
-            fgets(Estado2, 50, stdin);
-            printf("Insira o Nome da Cidade: ");
-            fgets(Cidade2, 50, stdin);
-            printf("Quantidade de habitantes: ");
-            scanf("%lu", &Populacao2);
-            printf("Digite a Area da Cidade em km2: ");
-            scanf("%f", &Area2);
-            printf("Digite o PIB anual da cidade: ");
-            scanf("%lf", &PIB2);
-            printf("Quantidade de Pontos Turisticos: ");
-            scanf("%u", &Pontos_Turisticos2);
-    
-                //Cálculo da densidade populacional, do PIB per capta e do inverso da densidade da Carta 2
-                float Densidade2 = (float) Populacao2/Area2;
-                float PIB_Percapta2 = (float) PIB2/Populacao2;
-                double Inversodadensidade2 = (float) Area2/Populacao2;
+            switch (Atributo) {
+                case 1:
+                    printf("Voce escolheu o atributo 1 - Pontos Turisticos\n");                    
+                                        
+                    if (Pontos_Turisticos1 > Pontos_Turisticos2){
+                        printf("Pontos Turisticos da Carta 2 = %u\n", Pontos_Turisticos2);  
+                        printf("Sua carta tem mais pontos turisticos que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Pontos_Turisticos1 < Pontos_Turisticos2){
+                        printf("Pontos Turisticos da Carta 2 = %u\n", Pontos_Turisticos2);   
+                        printf("Sua carta tem menos pontos turisticos que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Pontos Turisticos da Carta 2 = %u\n", Pontos_Turisticos2);  
+                        printf("Sua carta tem o mesmo número de pontos turisticos que a carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                    
+                    break;
 
-                //Cálculo do superpoder da Carta 2
-                double Superpoder2 = Populacao2 + PIB_Percapta2 + PIB2 + Area2 + Inversodadensidade2 + Pontos_Turisticos2;
+                case 2:
+                    printf("Voce escolheu o atributo 2 - Populacao\n");
+                                        
+                    if (Populacao1 > Populacao2){
+                        printf("Populacao da Carta 2 = %lu\n", Populacao2);  
+                        printf("Sua carta tem mais habitantes que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Populacao1 < Populacao2){
+                        printf("Populacao da Carta 2 = %lu\n", Populacao2);   
+                        printf("Sua carta tem menos habitantes que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Populacao da Carta 2 = %lu\n", Populacao2);  
+                        printf("Sua carta tem o mesmo número de habitantes que a carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                    
+                    break;
+                
+                case 3:
+                    printf("Voce escolheu o atributo 3 - Area\n");                                  
+                    if (Area1 > Area2){
+                        printf("Area da Carta 2 = %f\n", Area2);  
+                        printf("Sua carta tem uma area maior que a da carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Area1 < Area2){
+                        printf("Area da Carta 2 = %f\n", Area2);   
+                        printf("Sua carta tem uma area menor que a da carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Area da Carta 2 = %f\n", Area2);  
+                        printf("Sua carta tem a mesma area que a area da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                    
+                    break; 
 
-            //Impressão das variáveis declaradas da Carta 2
-            printf("%s\n", Carta2);
+                case 4:
+                    printf("Voce escolheu o atributo 4 - PIB\n");
+                    if (PIB1 > PIB2){
+                        printf("PIB da Carta 2 = %lf\n", PIB2);  
+                        printf("Sua carta tem um PIB maior que o da carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (PIB1 < PIB2){
+                        printf("PIB da Carta 2 = %lf\n", PIB2);   
+                        printf("Sua carta tem um PIB menor que o da carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("PIB da Carta 2 = %lf\n", PIB2);  
+                        printf("Sua carta tem um PIB igual ao da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                   
+                    break;
+
+                case 5:
+                    printf("Voce escolheu o atributo 5 - Conforto demografico\n");                                        
+                    if (Confortodemografico1 > Confortodemografico2){
+                        printf("Conforto demografico da Carta 2 = %f\n", Confortodemografico2);  
+                        printf("Sua carta tem mais conforto demografico que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Confortodemografico1 < Confortodemografico2){
+                        printf("Conforto demografico da Carta 2 = %f\n", Confortodemografico2);   
+                        printf("Sua carta tem menos conforto demografico que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Confortodemografico da Carta 2 = %f\n", Confortodemografico2);  
+                        printf("Sua carta tem um conforto demografico igual ao da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                    
+                    break;
+
+                case 6:
+                    printf("Voce escolheu o atributo 6 - Superpoder\n");                                        
+                    if (Superpoder1 > Superpoder2){
+                        printf("Superpoder da Carta 2 = %f\n", Superpoder2);  
+                        printf("Sua carta tem mais superpoder que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Superpoder1 < Superpoder2){
+                        printf("Superpoder da Carta 2 = %f\n", Superpoder2);   
+                        printf("Sua carta tem menos superpoder que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Superpoder da Carta 2 = %f\n", Superpoder2);  
+                        printf("Sua carta superpoder igual ao da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                   
+                    break;
+
+                default:
+                    printf("Opcao invalida. Tente novamente.\n");
+                    printf("Pressione ENTER para sair...");
+                    getchar();
+                    break;
+            }
+            break;
+
+        case 2:
+            printf("Voce escolheu a carta 2. Confira os atributos da carta 2 logo a seguir: \n");
             printf("Codigo: %s\n", Codigo2);
             printf("Estado: %s\n", Estado2);
             printf("Cidade: %s\n", Cidade2);
-            printf("Populacao: %lu\n", Populacao2);
-            printf("Area: %.2f km2\n", Area2);
-            printf("Densidade Populacional: %.2f\n", Densidade2);
-            printf("PIB: %.2lf\n", PIB2);
-            printf("PIB Percapta: %.2f\n", PIB_Percapta2);
             printf("Pontos Turisticos: %u\n", Pontos_Turisticos2);
-            printf("Super poder: %.2lf\n",Superpoder2);
-            printf("Carta2 cadastrada com sucesso\n\n");
-        
-            //Imprimindo as comparações
-             printf("COMPARANDO AS VARIAVEIS\n");
-            printf("Populacao da Carta 1 > Populacao da Carta 2: %d\n", Populacao1 > Populacao2);
-            printf("Area da Carta 1 > Area da Carta 2: %d\n", Area1 > Area2);
-            printf("PIB da Carta 1 > PIB da Carta 2: %d\n", PIB1 > PIB2);
-            printf("Pib Per Capta da Carta 1 > Pib Per Capta da Carta 2: %d\n", PIB_Percapta1 > PIB_Percapta2);
-            printf("Pontos Turisticos da Carta 1 > Pontos Turisticos da Carta 2: %d\n", Pontos_Turisticos1 > Pontos_Turisticos2);
-            printf("Super Poder da Carta 1 > Super Poder da carta 2: %d\n", Superpoder1 > Superpoder2);
-            printf("Todas as cartas foram cadastradas com sucesso\n");
+            printf("Populacao: %lu\n", Populacao2);
+            printf("Area: %f\n", Area2);
+            printf("PIB: %lf\n", PIB2);
+            printf("Conforto Demografico: %f\n", Confortodemografico2);
+            printf("Superpoder: %f\n\n", Superpoder2);
             
-            //Comparando a varíavel superpoder para determinar a carta vencedora
-            if (Superpoder1 > Superpoder2) {
-            printf("A carta 1 venceu\n");
-            } else {
-            printf("A carta 2 venceu\n");
-            }
+            printf("Escolha o atributo da carta 2. Para escolher o atributo da carta 2, digite o valor correspondente: \n");
+            printf("1 Para Pontos Turisticos \n");
+            printf("2 Para Populacao \n");
+            printf("3 Para Area \n");
+            printf("4 Para PIB \n");
+            printf("5 Para Conforto Demografico \n");
+            printf("6 Para Superpoder \n");
+            scanf("%d", &Atributo);
+            getchar();
 
-            getchar(); //Impede o fechamento automático da janela no prompt cmd
-            printf("Pressione Enter para sair...\n");//Solicita ao usuário que pressione a tecla enter para fechar a aplicação
-            getchar(); //Impede o fechamento automático da janela no prompt cmd
+            switch (Atributo) {
+                case 1:
+                    printf("Voce escolheu o atributo 1 - Pontos Turisticos\n");                    
+                                        
+                    if (Pontos_Turisticos1 < Pontos_Turisticos2){
+                        printf("Pontos Turisticos da Carta 1 = %u\n", Pontos_Turisticos1);  
+                        printf("Sua carta tem mais pontos turisticos que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Pontos_Turisticos1 > Pontos_Turisticos2){
+                        printf("Pontos Turisticos da Carta 1 = %u\n", Pontos_Turisticos1);   
+                        printf("Sua carta tem menos pontos turisticos que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Pontos Turisticos da Carta 1 = %u\n", Pontos_Turisticos1);  
+                        printf("Sua carta tem o mesmo número de pontos turisticos que a carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                    
+                    break;
 
-            return 0; //Fim da função principal.
+                case 2:
+                    printf("Voce escolheu o atributo 2 - Populacao\n");
+                                        
+                    if (Populacao1 < Populacao2){
+                        printf("Populacao da Carta 1 = %lu\n", Populacao1);  
+                        printf("Sua carta tem mais habitantes que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Populacao1 > Populacao2){
+                        printf("Populacao da Carta 1 = %lu\n", Populacao1);   
+                        printf("Sua carta tem menos habitantes que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Populacao da Carta 1 = %lu\n", Populacao1);  
+                        printf("Sua carta tem o mesmo número de habitantes que a carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }                    
+                    break;                    
+                                   
+                case 3:
+                    printf("Voce escolheu o atributo 3 - Area\n");                                  
+                    if (Area1 < Area2){
+                        printf("Area da Carta 1 = %f\n", Area1);  
+                        printf("Sua carta tem uma area maior que a da carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Area1 > Area2){
+                        printf("Area da Carta 1 = %f\n", Area1);   
+                        printf("Sua carta tem uma area menor que a da carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Area da Carta 1 = %f\n", Area1);  
+                        printf("Sua carta tem a mesma area que a area da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    break; 
 
+                case 4:
+                    printf("Voce escolheu o atributo 4 - PIB\n");
+                    if (PIB1 < PIB2){
+                        printf("PIB da Carta 1 = %lf\n", PIB1);  
+                        printf("Sua carta tem um PIB maior que o da carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (PIB1 > PIB2){
+                        printf("PIB da Carta 1 = %lf\n", PIB1);   
+                        printf("Sua carta tem um PIB menor que o da carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("PIB da Carta 2 = %lf\n", PIB2);  
+                        printf("Sua carta tem um PIB igual ao da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    break;
+
+                case 5:
+                    printf("Voce escolheu o atributo 5 - Conforto demografico\n");                                        
+                    if (Confortodemografico1 < Confortodemografico2){
+                        printf("Conforto demografico da Carta 1 = %f\n", Confortodemografico1);  
+                        printf("Sua carta tem mais conforto demografico que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Confortodemografico1 > Confortodemografico2){
+                        printf("Conforto demografico da Carta 1 = %f\n", Confortodemografico1);   
+                        printf("Sua carta tem menos conforto demografico que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Confortodemografico da Carta 1 = %f\n", Confortodemografico1);  
+                        printf("Sua carta tem um conforto demografico igual ao da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    break;
+
+                case 6:
+                    printf("Voce escolheu o atributo 6 - Superpoder\n");                                        
+                    if (Superpoder1 < Superpoder2){
+                        printf("Superpoder da Carta 1 = %f\n", Superpoder1);  
+                        printf("Sua carta tem mais superpoder que a carta do oponente\n");              
+                        printf("Sua carta venceu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else if (Superpoder1 > Superpoder2){
+                        printf("Superpoder da Carta 1 = %f\n", Superpoder1);   
+                        printf("Sua carta tem menos superpoder que a carta do oponente\n");                  
+                        printf("Sua carta perdeu!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    else {
+                        printf("Superpoder da Carta 1 = %f\n", Superpoder1);  
+                        printf("Sua carta superpoder igual ao da carta do oponente\n");                   
+                        printf("O jogo empatou!\n");
+                        printf("Pressione ENTER para sair...");
+                        getchar();
+                    }
+                    break;
+
+                default:
+                    printf("Opcao invalida. Tente novamente.\n");
+                    printf("Pressione ENTER para sair...");
+                    getchar();
+                    break;
+            }            
+            break;
+
+        default:
+            printf("Opcao invalida. Tente novamente.\n"); 
+            printf("Pressione ENTER para sair...");
+            getchar();                       
+            break;
+    }
+    return 0;
 }
